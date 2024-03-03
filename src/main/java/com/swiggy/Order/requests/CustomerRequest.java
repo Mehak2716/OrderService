@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 public class CustomerRequest {
 
-    private String name;
+    private String username;
 
     private String password;
 
