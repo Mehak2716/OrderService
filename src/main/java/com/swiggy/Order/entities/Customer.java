@@ -28,15 +28,13 @@ public class Customer {
     @JoinColumn(name = "location_id")
     private Location location;
 
-    @Transient
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
     public Customer(String username, String password, Location location) {
         this.username = username;
         this.password = password;
         this.location = location;
     }
     public void encryptPassword(){
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(this.password);
     }
 

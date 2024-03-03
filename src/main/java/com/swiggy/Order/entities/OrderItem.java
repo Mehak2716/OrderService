@@ -1,18 +1,27 @@
 package com.swiggy.Order.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
+@Data
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long OrderItemID;
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+
     private Long menuItemId;
+
     private int quantity;
 
+    @Column(name = "order_item_price")
+    private double totalPrice;
+
+    public OrderItem(Long menuItemId, int quantity, double totalPrice){
+        this.menuItemId = menuItemId;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+    }
 }

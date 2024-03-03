@@ -16,7 +16,7 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long ID;
+    private Long id;
 
     private double xcordinate;
 
@@ -29,7 +29,7 @@ public class Location {
     @Override
     public String toString() {
         return "Location{" +
-                "ID=" + ID +
+                "ID=" + id +
                 ", xCordinate=" + xcordinate +
                 ", yCordinate=" + ycordinate +
                 '}';

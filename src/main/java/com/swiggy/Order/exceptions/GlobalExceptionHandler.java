@@ -27,4 +27,19 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<ErrorResponse>(err, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException exception, WebRequest re){
+        ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
+
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ResourceForbiddenException.class)
+    public ResponseEntity<ErrorResponse> handleResourceForbiddenException(ResourceForbiddenException exception, WebRequest re){
+        ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
+
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.FORBIDDEN);
+    }
+
 }

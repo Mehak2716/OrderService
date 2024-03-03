@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import static com.swiggy.Order.constants.ResponseMessage.USER_NOT_FOUND;
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -17,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UserNotFoundException {
 
-        Customer user = customerRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User not found"));
+        Customer user = customerRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND));
         return new CustomUserDetails(user);
     }
 
