@@ -1,24 +1,31 @@
 package com.swiggy.Order.mapper;
 
-import com.swiggy.Order.dto.CustomerDto;
+import com.swiggy.Order.requests.CustomerRequest;
 import com.swiggy.Order.entities.Customer;
-import com.swiggy.Order.entities.Location;
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.GeometryFactory;
-import org.locationtech.jts.geom.Point;
-
-import java.awt.*;
+import com.swiggy.Order.responses.CustomerResponse;
+import com.swiggy.Order.responses.LocationResponse;
 
 public class CustomerMapper {
 
-    public static Customer mapToCustomer(CustomerDto customerDto){
+    public static Customer mapToCustomer(CustomerRequest customerRequest){
 
-        Location location = LocationMapper.mapToLocation(customerDto.getLocation());
         Customer customer = new Customer(
-                customerDto.getName(),
-                customerDto.getPassword(),
-                location);
+                customerRequest.getName(),
+                customerRequest.getPassword(),
+                customerRequest.getLocation());
 
         return customer;
     }
+
+   public static CustomerResponse mapToResponse(Customer customer){
+        return  new CustomerResponse(
+                customer.getId(),
+                customer.getName(),
+                new LocationResponse(
+                        customer.getLocation().getXcordinate(),
+                        customer.getLocation().getYcordinate()
+                )
+        );
+   }
+
 }

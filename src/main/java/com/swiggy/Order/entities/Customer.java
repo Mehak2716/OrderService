@@ -18,8 +18,9 @@ public class Customer {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
     private String password;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "location")
+    @JoinColumn(name = "location_id")
     private Location location;
 
     public Customer(String name, String password,Location location) {
@@ -31,8 +32,10 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
+                "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", location=" + location +
                 '}';
     }
 }

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class OrderItem {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long OrderItemID;

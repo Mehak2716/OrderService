@@ -1,9 +1,12 @@
 package com.swiggy.Order.controllers;
 
 
-import com.swiggy.Order.dto.CustomerDto;
+import com.swiggy.Order.requests.CustomerRequest;
+import com.swiggy.Order.entities.Customer;
+import com.swiggy.Order.responses.CustomerResponse;
 import com.swiggy.Order.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,9 +16,9 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
     @PostMapping
-    public void register(@RequestBody CustomerDto customerDto){
-
-        customerService.register(customerDto);
+    public ResponseEntity<CustomerResponse> register(@RequestBody CustomerRequest customerRequest){
+        System.out.println(customerRequest);
+        return customerService.register(customerRequest);
     }
 
     @GetMapping

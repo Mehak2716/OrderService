@@ -1,32 +1,37 @@
 package com.swiggy.Order.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.locationtech.jts.geom.Point;
+import lombok.Setter;
 
 
 @Entity
 @NoArgsConstructor
+@Data
+@Getter
+@Setter
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
 
-    private String name;
-    private Point point;
+    private double xcordinate;
 
-    public Location(String name, Point point){
-        this.name = name;
-        this.point = point;
+    private double ycordinate;
+
+    public Location(double xcordinate, double ycordinate) {
+        this.xcordinate = xcordinate;
+        this.ycordinate = ycordinate;
     }
-
     @Override
     public String toString() {
         return "Location{" +
                 "ID=" + ID +
-                ", name='" + name + '\'' +
-                ", point=" + point.getX() + point.getY()+
+                ", xCordinate=" + xcordinate +
+                ", yCordinate=" + ycordinate +
                 '}';
     }
 }

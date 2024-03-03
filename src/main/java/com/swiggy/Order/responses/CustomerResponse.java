@@ -1,4 +1,4 @@
-package com.swiggy.Order.dto;
+package com.swiggy.Order.responses;
 
 
 import lombok.AllArgsConstructor;
@@ -8,9 +8,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LocationDto {
+public class CustomerResponse {
+
+    private Long id;
 
     private String name;
-    private int x_coordinate;
-    private int y_coordinate;
+
+    private LocationResponse location;
+
 }
