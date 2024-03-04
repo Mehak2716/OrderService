@@ -7,7 +7,9 @@ import lombok.Data;
 public class Restaurant {
 
     private Long id;
+
     private String name;
+
     private Location location;
 
     private Status status;

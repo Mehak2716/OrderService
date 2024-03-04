@@ -42,4 +42,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ErrorResponse>(err, HttpStatus.FORBIDDEN);
     }
 
+    @ExceptionHandler(GrpcServiceUnavailableException.class)
+    public ResponseEntity<ErrorResponse> handleGrpcServiceUnavailableException(GrpcServiceUnavailableException exception, WebRequest re){
+        ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
+
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
 }

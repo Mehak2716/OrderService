@@ -14,5 +14,7 @@ public class ResponseMessage {
 
     public static final String RESOURCE_FORBIDDEN = "Cannot access this resource";
 
+    public static final String SERVICE_UNAVAILABLE = "Fulfillment Service Unavailable";
+
 
 }

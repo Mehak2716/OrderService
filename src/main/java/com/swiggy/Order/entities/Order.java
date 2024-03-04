@@ -1,5 +1,6 @@
 package com.swiggy.Order.entities;
 
+import com.swiggy.Order.clients.DeliveryPartnerAssignmentManager;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,7 +33,7 @@ public class Order {
         this.orderItemList = orderItemList;
         this.creationTimestamp = LocalDateTime.now();
         calculateBill();
-        assignDeliveryPartner();
+//        assignDeliveryPartner();
     }
 
     public void calculateBill(){
@@ -40,7 +41,7 @@ public class Order {
             billTotal+=orderItem.getTotalPrice();
         }
     }
-    public void assignDeliveryPartner(){
-
-    }
+//    public void assignDeliveryPartner(){
+//         deliveryPartnerId = DeliveryPartnerAssignmentManager.getNearestDeliveryPartner();
+//    }
 }
