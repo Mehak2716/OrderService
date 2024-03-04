@@ -20,11 +20,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static com.swiggy.Order.constants.ResponseMessage.USERNAME_ALREADY_IN_USE;
+import static com.swiggy.Order.constants.ResponseMessage.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -46,6 +45,7 @@ public class CustomerControllerTest {
         String request  = new ObjectMapper().writeValueAsString(customerRequest);
         String expectedJson = new ObjectMapper().writeValueAsString(customerResponse);
 
+        when(validator.validateRegistrationRequest(any(CustomerRequest.class))).thenReturn(true);
         when(customerService.register(any(CustomerRequest.class))).thenReturn(new ResponseEntity<>(customerResponse, HttpStatus.CREATED));
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/order-management/customers")
@@ -55,6 +55,7 @@ public class CustomerControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().json(expectedJson));
 
+        verify(validator,times(1)).validateRegistrationRequest(any(CustomerRequest.class));
         verify(customerService,times(1)).register(any(CustomerRequest.class));
     }
 
@@ -63,12 +64,18 @@ public class CustomerControllerTest {
         CustomerRequest invalidRequest = new CustomerRequest(null, "abc", new Location());
         String request = new ObjectMapper().writeValueAsString(invalidRequest);
 
+
+        doThrow(new IllegalArgumentException(INVALID_REGISTRATION_ARGUMENT))
+                .when(validator).validateRegistrationRequest(any(CustomerRequest.class));
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/order-management/customers")
                         .content(request)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value(INVALID_REGISTRATION_ARGUMENT));
+
+        verify(validator,times(1)).validateRegistrationRequest(any(CustomerRequest.class));
         verify(customerService,never()).register(any(CustomerRequest.class));
     }
 
@@ -85,8 +92,10 @@ public class CustomerControllerTest {
                         .content(request)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isConflict());
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.message").value(USERNAME_ALREADY_IN_USE));
 
+        verify(validator,times(1)).validateRegistrationRequest(any(CustomerRequest.class));
         verify(customerService,never()).register(any(CustomerRequest.class));
     }
 }

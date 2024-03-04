@@ -4,6 +4,9 @@ import com.swiggy.Order.clients.DeliveryPartnerAssignmentManager;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Table(name = "orders")
+@Component
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,21 +31,22 @@ public class Order {
     @Column(name = "creation_timestamp")
     private LocalDateTime creationTimestamp;
 
-    public Order(Long customerId, Long restaurantID, List<OrderItem> orderItemList) {
+    public Order(Long customerId, Restaurant restaurant, List<OrderItem> orderItemList) {
         this.customerId = customerId;
-        this.restaurantID = restaurantID;
+        this.restaurantID = restaurant.getId();
         this.orderItemList = orderItemList;
         this.creationTimestamp = LocalDateTime.now();
         calculateBill();
-//        assignDeliveryPartner();
+        assignDeliveryPartner(restaurant.getLocation());
     }
 
-    public void calculateBill(){
+    private void calculateBill(){
         for(OrderItem orderItem:orderItemList){
             billTotal+=orderItem.getTotalPrice();
         }
     }
-//    public void assignDeliveryPartner(){
-//         deliveryPartnerId = DeliveryPartnerAssignmentManager.getNearestDeliveryPartner();
-//    }
+    private void assignDeliveryPartner(Location location){
+         deliveryPartnerId = (long) DeliveryPartnerAssignmentManager
+                 .getNearestDeliveryPartner(location.getXcordinate(),location.getXcordinate());
+    }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderMapper {
-    public static Order mapToOrder(Long customerId,OrderRequest orderRequest){
+    public static Order mapToOrder(Long customerId,OrderRequest orderRequest) {
         List<OrderItem> orderItemList = new ArrayList<>();
         for(OrderItemRequest orderItemRequest:orderRequest.getOrderItemList()){
             MenuItem menuItem= orderItemRequest.getMenuItem();
@@ -23,7 +23,7 @@ public class OrderMapper {
         }
 
         return new Order(customerId,
-                orderRequest.getRestaurant().getId(),
+                orderRequest.getRestaurant(),
                 orderItemList);
     }
 

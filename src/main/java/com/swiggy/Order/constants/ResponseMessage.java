@@ -16,5 +16,8 @@ public class ResponseMessage {
 
     public static final String SERVICE_UNAVAILABLE = "Fulfillment Service Unavailable";
 
+    public static final String DELIVERY_PARTNER_UNAVAILABLE = "Cannot place order due to unavailability of delivery partner.";
+
+    public static final String GRPC_UNKNOWN_ERROR = "Unexpected Error occured calling grpc service";
 
 }

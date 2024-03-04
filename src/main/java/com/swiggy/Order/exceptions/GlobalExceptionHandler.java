@@ -49,4 +49,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ErrorResponse>(err, HttpStatus.SERVICE_UNAVAILABLE);
     }
 
+    @ExceptionHandler(NoAvailableDeliveryPartnerException.class)
+    public ResponseEntity<ErrorResponse> handleNoAvailableDeliveryPartnerException(NoAvailableDeliveryPartnerException exception, WebRequest re){
+        ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
+
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(GrpcUnknownException.class)
+    public ResponseEntity<ErrorResponse> handleGrpcUnknownException(GrpcUnknownException exception, WebRequest re){
+        ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
+
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

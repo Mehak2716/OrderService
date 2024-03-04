@@ -32,6 +32,7 @@ public class Validator {
     }
 
     public boolean validateOrderRequest(String username, Long customerId, OrderRequest orderRequest){
+
         if(orderRequest.getRestaurant()==null || orderRequest.getOrderItemList()==null){
             throw new IllegalArgumentException(INVALID_ORDER_ARGUMENT);
         }
