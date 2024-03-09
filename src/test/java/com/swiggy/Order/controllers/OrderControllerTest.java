@@ -5,6 +5,7 @@ import com.swiggy.Order.entities.Location;
 import com.swiggy.Order.entities.MenuItem;
 import com.swiggy.Order.entities.Restaurant;
 import com.swiggy.Order.enums.RestaurantStatus;
+import com.swiggy.Order.exceptions.NoAvailableDeliveryPartnerException;
 import com.swiggy.Order.exceptions.ResourceForbiddenException;
 import com.swiggy.Order.requests.OrderItemRequest;
 import com.swiggy.Order.requests.OrderRequest;
@@ -129,6 +130,27 @@ public class OrderControllerTest {
 
         verify(validator, times(1)).validateOrderRequest(anyString(), anyLong(), any(OrderRequest.class));
         verify(orderService, never()).create(anyLong(), any(OrderRequest.class));
+    }
+
+    @Test
+    @WithMockUser("user")
+    public void testOrderCreationWhenNoDeliveryPartnerAvailable() throws Exception {
+        OrderRequest orderRequest = new OrderRequest(new Restaurant(), new ArrayList<OrderItemRequest>());
+        String request = new ObjectMapper().writeValueAsString(orderRequest);
+
+        when(validator.validateOrderRequest("user",1L,orderRequest)).thenReturn(true);
+        doThrow(new NoAvailableDeliveryPartnerException(DELIVERY_PARTNER_UNAVAILABLE))
+                .when(orderService).create(anyLong(), any(OrderRequest.class));
+        mockMvc.perform(MockMvcRequestBuilders
+                        .post("/api/v1/order-management/customers/{customerId}/orders", 1L)
+                        .content(request)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isProcessing())
+                .andExpect(jsonPath("$.message").value(DELIVERY_PARTNER_UNAVAILABLE));
+
+        verify(validator, times(1)).validateOrderRequest(anyString(), anyLong(), any(OrderRequest.class));
+        verify(orderService, times(1)).create(anyLong(), any(OrderRequest.class));
     }
 
 }
