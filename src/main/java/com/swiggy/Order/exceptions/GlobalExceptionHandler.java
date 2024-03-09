@@ -35,6 +35,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ErrorResponse>(err, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleOrderNotFoundException(OrderNotFoundException exception, WebRequest re){
+        ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
+
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(ResourceForbiddenException.class)
     public ResponseEntity<ErrorResponse> handleResourceForbiddenException(ResourceForbiddenException exception, WebRequest re){
         ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
@@ -53,7 +60,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleNoAvailableDeliveryPartnerException(NoAvailableDeliveryPartnerException exception, WebRequest re){
         ErrorResponse err = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), re.getDescription(false));
 
-        return new ResponseEntity<ErrorResponse>(err, HttpStatus.NOT_ACCEPTABLE);
+        return new ResponseEntity<ErrorResponse>(err, HttpStatus.PROCESSING);
     }
 
     @ExceptionHandler(GrpcUnknownException.class)

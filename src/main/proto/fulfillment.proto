@@ -1,12 +1,16 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
 option java_package = "fulfillment";
 option java_multiple_files = true;
 
-service Fulfillment {
-  rpc RegisterDeliveryPartner (RegisterDeliveryPartnerRequest) returns (DeliveryPartnerResponse) {}
-  rpc GetNearestDeliveryPartner (Location) returns (NearestDeliveryPartnerResponse) {}
-  rpc UpdateDeliveryStatus (DeliveryStatus) returns (DeliveryResponse){}
+service DeliveryPartnerService {
+  rpc RegisterDeliveryPartner (RegisterDeliveryPartnerRequest) returns (DeliveryPartner) {}
+}
+
+service DeliveryService{
+  rpc InitiateDelivery (DeliveryRequest) returns (Response) {}
+  rpc MarkDelivered (DeliveredRequest) returns (DeliveredResponse){}
 }
 
 message Location{
@@ -21,22 +25,31 @@ message RegisterDeliveryPartnerRequest{
   string availability = 4;
 }
 
-message DeliveryPartnerResponse{
+message DeliveryPartner{
   int64 id = 1;
   string username = 2;
   Location location = 3;
   string availability = 4;
 }
 
-message NearestDeliveryPartnerResponse{
-  int64 id = 1;
-  string username = 2;
+message DeliveryRequest{
+  int64 orderId = 1;
+  Location pickUpLocation = 2;
+  Location deliveryLocation = 3;
 }
 
-message DeliveryStatus {
-  string status = 1;
+message DeliveredRequest {
+  int64 orderId = 1;
 }
 
-message DeliveryResponse {
-  string deliveryResponse = 1;
+message Response{
+  string message = 1;
+}
+
+message DeliveredResponse {
+  int64 orderId =1;
+  int64 deliveryParterId = 2;
+  Location deliveryLocation = 3;
+  google.protobuf.Timestamp deliveredAt = 4;
+
 }

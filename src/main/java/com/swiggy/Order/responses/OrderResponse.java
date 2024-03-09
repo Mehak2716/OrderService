@@ -19,8 +19,6 @@ public class OrderResponse {
 
     private Long restaurantID;
 
-    private Long deliveryPartnerId;
-
     private List<OrderItemResponse> orderedItems;
 
     private double totalBill;

@@ -1,7 +1,9 @@
 package com.swiggy.Order.services.impl;
 
+import com.swiggy.Order.entities.Customer;
 import com.swiggy.Order.entities.Order;
 import com.swiggy.Order.mapper.OrderMapper;
+import com.swiggy.Order.repositories.CustomerRepository;
 import com.swiggy.Order.repositories.OrderRepository;
 import com.swiggy.Order.requests.OrderRequest;
 import com.swiggy.Order.responses.OrderResponse;
@@ -15,11 +17,14 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    CustomerRepository customerRepository;
     public ResponseEntity<OrderResponse> create(Long customerId, OrderRequest orderRequest) {
-         Order order = OrderMapper.mapToOrder(customerId,orderRequest);
+         Customer customer = customerRepository.findById(customerId).orElseThrow();
+         Order order = OrderMapper.mapToOrder(customer,orderRequest);
          Order createdOrder = orderRepository.save(order);
+         createdOrder.initiateDelivery(orderRequest.getRestaurant());
          OrderResponse response = OrderMapper.mapToResponse(createdOrder);
          return new ResponseEntity<>(response, HttpStatus.CREATED);
-
     }
 }

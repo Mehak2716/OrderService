@@ -1,6 +1,6 @@
 package com.swiggy.Order.entities;
 
-import com.swiggy.Order.enums.Status;
+import com.swiggy.Order.enums.RestaurantStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +16,5 @@ public class Restaurant {
 
     private Location location;
 
-    private Status status;
+    private RestaurantStatus restaurantStatus;
 }

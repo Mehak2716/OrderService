@@ -1,5 +1,6 @@
 package com.swiggy.Order.mapper;
 
+import com.swiggy.Order.entities.Customer;
 import com.swiggy.Order.entities.MenuItem;
 import com.swiggy.Order.entities.Order;
 import com.swiggy.Order.entities.OrderItem;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderMapper {
-    public static Order mapToOrder(Long customerId,OrderRequest orderRequest) {
+    public static Order mapToOrder(Customer customer, OrderRequest orderRequest) {
         List<OrderItem> orderItemList = new ArrayList<>();
         for(OrderItemRequest orderItemRequest:orderRequest.getOrderItemList()){
             MenuItem menuItem= orderItemRequest.getMenuItem();
@@ -22,7 +23,7 @@ public class OrderMapper {
             orderItemList.add(orderItem);
         }
 
-        return new Order(customerId,
+        return new Order(customer,
                 orderRequest.getRestaurant(),
                 orderItemList);
     }
@@ -40,9 +41,8 @@ public class OrderMapper {
 
        return new OrderResponse(
                 order.getId(),
-                order.getCustomerId(),
+                order.getCustomer().getId(),
                 order.getRestaurantID(),
-                order.getDeliveryPartnerId(),
                 orderItemResponses,
                 order.getBillTotal(),
                 order.getCreationTimestamp()

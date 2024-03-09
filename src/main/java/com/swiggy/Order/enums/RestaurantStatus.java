@@ -1,6 +1,6 @@
 package com.swiggy.Order.enums;
 
-public enum Status {
+public enum RestaurantStatus {
 
     Open,
     Close;

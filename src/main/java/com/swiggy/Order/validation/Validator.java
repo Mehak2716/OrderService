@@ -1,10 +1,13 @@
 package com.swiggy.Order.validation;
 
 import com.swiggy.Order.entities.Customer;
+import com.swiggy.Order.entities.Order;
+import com.swiggy.Order.exceptions.OrderNotFoundException;
 import com.swiggy.Order.exceptions.ResourceForbiddenException;
 import com.swiggy.Order.exceptions.UserNotFoundException;
 import com.swiggy.Order.exceptions.UsernameAlreadyInUseException;
 import com.swiggy.Order.repositories.CustomerRepository;
+import com.swiggy.Order.repositories.OrderRepository;
 import com.swiggy.Order.requests.CustomerRequest;
 import com.swiggy.Order.requests.OrderRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,9 @@ public class Validator {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
 
     public boolean validateRegistrationRequest(CustomerRequest request){
         if(request.getUsername()==null || request.getPassword()==null || request.getLocation()==null){
@@ -46,4 +52,5 @@ public class Validator {
         }
         return true;
     }
+
 }

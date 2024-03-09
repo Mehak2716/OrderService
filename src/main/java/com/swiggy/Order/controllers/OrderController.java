@@ -14,15 +14,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/order-management/customers")
+@RequestMapping("api/v1/order-management/")
 public class OrderController {
 
     @Autowired
     OrderService orderService;
 
     @PreAuthorize("@validator.validateOrderRequest(authentication.name,#customerId,#orderRequest)")
-    @PostMapping("/{customerId}/orders")
+    @PostMapping("customers/{customerId}/orders")
     public ResponseEntity<OrderResponse> create(@PathVariable Long customerId, @RequestBody OrderRequest orderRequest){
         return orderService.create(customerId,orderRequest);
     }
+
 }
