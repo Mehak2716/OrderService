@@ -13,7 +13,7 @@ import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import org.springframework.stereotype.Component;
 
-import static com.swiggy.Order.constants.ResponseMessage.*;
+import static com.swiggy.Order.constants.literals.ResponseMessage.*;
 
 @Component
 public class DeliveryManager {

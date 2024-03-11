@@ -1,12 +1,11 @@
 package com.swiggy.Order.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swiggy.Order.entities.Location;
 import com.swiggy.Order.exceptions.UsernameAlreadyInUseException;
-import com.swiggy.Order.requests.CustomerRequest;
-import com.swiggy.Order.responses.CustomerResponse;
-import com.swiggy.Order.responses.LocationResponse;
+import com.swiggy.Order.dto.requests.CustomerRequest;
+import com.swiggy.Order.dto.responses.CustomerResponse;
+import com.swiggy.Order.dto.responses.LocationResponse;
 import com.swiggy.Order.services.impl.CustomerServiceImpl;
 import com.swiggy.Order.validation.Validator;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static com.swiggy.Order.constants.ResponseMessage.*;
+import static com.swiggy.Order.constants.literals.ResponseMessage.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

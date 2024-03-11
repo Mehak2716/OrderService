@@ -1,7 +1,7 @@
 package com.swiggy.Order.entities;
 
-import com.swiggy.Order.enums.RestaurantStatus;
-import com.swiggy.Order.models.Restaurant;
+import com.swiggy.Order.constants.enums.RestaurantStatus;
+import com.swiggy.Order.dto.data.Restaurant;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

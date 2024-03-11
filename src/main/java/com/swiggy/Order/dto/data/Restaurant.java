@@ -1,7 +1,7 @@
-package com.swiggy.Order.models;
+package com.swiggy.Order.dto.data;
 
 import com.swiggy.Order.entities.Location;
-import com.swiggy.Order.enums.RestaurantStatus;
+import com.swiggy.Order.constants.enums.RestaurantStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

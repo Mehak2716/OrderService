@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import static com.swiggy.Order.constants.ResponseMessage.USER_NOT_FOUND;
+import static com.swiggy.Order.constants.literals.ResponseMessage.USER_NOT_FOUND;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

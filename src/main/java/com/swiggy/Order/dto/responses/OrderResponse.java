@@ -1,6 +1,5 @@
-package com.swiggy.Order.responses;
+package com.swiggy.Order.dto.responses;
 
-import com.swiggy.Order.entities.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,9 +1,9 @@
 package com.swiggy.Order.services.impl;
 
-import com.swiggy.Order.requests.CustomerRequest;
+import com.swiggy.Order.dto.requests.CustomerRequest;
 import com.swiggy.Order.mapper.CustomerMapper;
 import com.swiggy.Order.repositories.CustomerRepository;
-import com.swiggy.Order.responses.CustomerResponse;
+import com.swiggy.Order.dto.responses.CustomerResponse;
 import com.swiggy.Order.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

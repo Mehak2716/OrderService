@@ -1,6 +1,6 @@
-package com.swiggy.Order.requests;
+package com.swiggy.Order.dto.requests;
 
-import com.swiggy.Order.models.MenuItem;
+import com.swiggy.Order.dto.data.MenuItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

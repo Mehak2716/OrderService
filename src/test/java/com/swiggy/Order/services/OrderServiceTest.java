@@ -1,15 +1,15 @@
 package com.swiggy.Order.services;
 
 import com.swiggy.Order.entities.*;
-import com.swiggy.Order.enums.RestaurantStatus;
+import com.swiggy.Order.constants.enums.RestaurantStatus;
 import com.swiggy.Order.exceptions.NoAvailableDeliveryPartnerException;
-import com.swiggy.Order.models.MenuItem;
-import com.swiggy.Order.models.Restaurant;
+import com.swiggy.Order.dto.data.MenuItem;
+import com.swiggy.Order.dto.data.Restaurant;
 import com.swiggy.Order.repositories.CustomerRepository;
 import com.swiggy.Order.repositories.OrderRepository;
-import com.swiggy.Order.requests.OrderItemRequest;
-import com.swiggy.Order.requests.OrderRequest;
-import com.swiggy.Order.responses.OrderResponse;
+import com.swiggy.Order.dto.requests.OrderItemRequest;
+import com.swiggy.Order.dto.requests.OrderRequest;
+import com.swiggy.Order.dto.responses.OrderResponse;
 import com.swiggy.Order.services.impl.OrderServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

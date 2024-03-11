@@ -6,14 +6,14 @@ import com.swiggy.Order.exceptions.UserNotFoundException;
 import com.swiggy.Order.exceptions.UsernameAlreadyInUseException;
 import com.swiggy.Order.repositories.CustomerRepository;
 import com.swiggy.Order.repositories.OrderRepository;
-import com.swiggy.Order.requests.CustomerRequest;
-import com.swiggy.Order.requests.OrderRequest;
+import com.swiggy.Order.dto.requests.CustomerRequest;
+import com.swiggy.Order.dto.requests.OrderRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.swiggy.Order.constants.ResponseMessage.*;
+import static com.swiggy.Order.constants.literals.ResponseMessage.*;
 
 @Component("validator")
 public class Validator {

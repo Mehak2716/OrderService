@@ -1,4 +1,4 @@
-package com.swiggy.Order.requests;
+package com.swiggy.Order.dto.requests;
 
 import com.swiggy.Order.entities.Location;
 import lombok.*;

@@ -3,9 +3,9 @@ package com.swiggy.Order.services;
 import com.swiggy.Order.entities.Customer;
 import com.swiggy.Order.entities.Location;
 import com.swiggy.Order.repositories.CustomerRepository;
-import com.swiggy.Order.requests.CustomerRequest;
-import com.swiggy.Order.responses.CustomerResponse;
-import com.swiggy.Order.responses.LocationResponse;
+import com.swiggy.Order.dto.requests.CustomerRequest;
+import com.swiggy.Order.dto.responses.CustomerResponse;
+import com.swiggy.Order.dto.responses.LocationResponse;
 import com.swiggy.Order.services.impl.CustomerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,12 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;

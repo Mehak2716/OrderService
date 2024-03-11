@@ -1,4 +1,4 @@
-package com.swiggy.Order.constants;
+package com.swiggy.Order.constants.literals;
 
 public class ResponseMessage {
 

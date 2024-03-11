@@ -1,8 +1,8 @@
 package com.swiggy.Order.entities;
 
 import com.swiggy.Order.clients.DeliveryManager;
-import com.swiggy.Order.enums.OrderStatus;
-import com.swiggy.Order.models.Restaurant;
+import com.swiggy.Order.constants.enums.OrderStatus;
+import com.swiggy.Order.dto.data.Restaurant;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

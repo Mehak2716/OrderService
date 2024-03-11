@@ -1,4 +1,4 @@
-package com.swiggy.Order.models;
+package com.swiggy.Order.dto.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

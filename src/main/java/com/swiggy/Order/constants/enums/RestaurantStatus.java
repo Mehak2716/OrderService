@@ -1,4 +1,4 @@
-package com.swiggy.Order.enums;
+package com.swiggy.Order.constants.enums;
 
 public enum RestaurantStatus {
 

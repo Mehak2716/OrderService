@@ -1,13 +1,12 @@
 package com.swiggy.Order.controllers;
 
 
-import com.swiggy.Order.requests.CustomerRequest;
-import com.swiggy.Order.responses.CustomerResponse;
+import com.swiggy.Order.dto.requests.CustomerRequest;
+import com.swiggy.Order.dto.responses.CustomerResponse;
 import com.swiggy.Order.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

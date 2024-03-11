@@ -1,7 +1,7 @@
 package com.swiggy.Order.controllers;
 
-import com.swiggy.Order.requests.OrderRequest;
-import com.swiggy.Order.responses.OrderResponse;
+import com.swiggy.Order.dto.requests.OrderRequest;
+import com.swiggy.Order.dto.responses.OrderResponse;
 import com.swiggy.Order.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

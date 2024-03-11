@@ -1,13 +1,13 @@
 package com.swiggy.Order.mapper;
 
 import com.swiggy.Order.entities.Customer;
-import com.swiggy.Order.models.MenuItem;
+import com.swiggy.Order.dto.data.MenuItem;
 import com.swiggy.Order.entities.Order;
 import com.swiggy.Order.entities.OrderItem;
-import com.swiggy.Order.requests.OrderItemRequest;
-import com.swiggy.Order.requests.OrderRequest;
-import com.swiggy.Order.responses.OrderItemResponse;
-import com.swiggy.Order.responses.OrderResponse;
+import com.swiggy.Order.dto.requests.OrderItemRequest;
+import com.swiggy.Order.dto.requests.OrderRequest;
+import com.swiggy.Order.dto.responses.OrderItemResponse;
+import com.swiggy.Order.dto.responses.OrderResponse;
 
 import java.util.ArrayList;
 import java.util.List;

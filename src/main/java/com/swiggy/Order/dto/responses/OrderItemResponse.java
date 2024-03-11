@@ -1,4 +1,4 @@
-package com.swiggy.Order.responses;
+package com.swiggy.Order.dto.responses;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;

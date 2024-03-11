@@ -1,6 +1,6 @@
-package com.swiggy.Order.requests;
+package com.swiggy.Order.dto.requests;
 
-import com.swiggy.Order.models.Restaurant;
+import com.swiggy.Order.dto.data.Restaurant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
