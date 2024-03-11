@@ -2,6 +2,7 @@ package com.swiggy.Order.entities;
 
 import com.swiggy.Order.clients.DeliveryManager;
 import com.swiggy.Order.enums.OrderStatus;
+import com.swiggy.Order.models.Restaurant;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

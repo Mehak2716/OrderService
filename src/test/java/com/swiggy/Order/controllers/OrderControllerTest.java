@@ -2,8 +2,8 @@ package com.swiggy.Order.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swiggy.Order.entities.Location;
-import com.swiggy.Order.entities.MenuItem;
-import com.swiggy.Order.entities.Restaurant;
+import com.swiggy.Order.models.MenuItem;
+import com.swiggy.Order.models.Restaurant;
 import com.swiggy.Order.enums.RestaurantStatus;
 import com.swiggy.Order.exceptions.NoAvailableDeliveryPartnerException;
 import com.swiggy.Order.exceptions.ResourceForbiddenException;

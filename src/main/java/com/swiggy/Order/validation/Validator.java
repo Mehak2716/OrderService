@@ -1,8 +1,6 @@
 package com.swiggy.Order.validation;
 
 import com.swiggy.Order.entities.Customer;
-import com.swiggy.Order.entities.Order;
-import com.swiggy.Order.exceptions.OrderNotFoundException;
 import com.swiggy.Order.exceptions.ResourceForbiddenException;
 import com.swiggy.Order.exceptions.UserNotFoundException;
 import com.swiggy.Order.exceptions.UsernameAlreadyInUseException;

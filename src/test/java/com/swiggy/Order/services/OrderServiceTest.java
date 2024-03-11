@@ -3,6 +3,8 @@ package com.swiggy.Order.services;
 import com.swiggy.Order.entities.*;
 import com.swiggy.Order.enums.RestaurantStatus;
 import com.swiggy.Order.exceptions.NoAvailableDeliveryPartnerException;
+import com.swiggy.Order.models.MenuItem;
+import com.swiggy.Order.models.Restaurant;
 import com.swiggy.Order.repositories.CustomerRepository;
 import com.swiggy.Order.repositories.OrderRepository;
 import com.swiggy.Order.requests.OrderItemRequest;

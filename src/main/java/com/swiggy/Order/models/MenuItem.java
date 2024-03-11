@@ -1,4 +1,4 @@
-package com.swiggy.Order.entities;
+package com.swiggy.Order.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

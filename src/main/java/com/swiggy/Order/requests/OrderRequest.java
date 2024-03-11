@@ -1,7 +1,6 @@
 package com.swiggy.Order.requests;
 
-import com.swiggy.Order.entities.MenuItem;
-import com.swiggy.Order.entities.Restaurant;
+import com.swiggy.Order.models.Restaurant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

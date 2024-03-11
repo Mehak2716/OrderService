@@ -1,7 +1,7 @@
 package com.swiggy.Order.mapper;
 
 import com.swiggy.Order.entities.Customer;
-import com.swiggy.Order.entities.MenuItem;
+import com.swiggy.Order.models.MenuItem;
 import com.swiggy.Order.entities.Order;
 import com.swiggy.Order.entities.OrderItem;
 import com.swiggy.Order.requests.OrderItemRequest;

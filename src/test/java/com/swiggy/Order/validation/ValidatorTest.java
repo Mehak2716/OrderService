@@ -2,8 +2,8 @@ package com.swiggy.Order.validation;
 
 import com.swiggy.Order.entities.Customer;
 import com.swiggy.Order.entities.Location;
-import com.swiggy.Order.entities.MenuItem;
-import com.swiggy.Order.entities.Restaurant;
+import com.swiggy.Order.models.MenuItem;
+import com.swiggy.Order.models.Restaurant;
 import com.swiggy.Order.exceptions.ResourceForbiddenException;
 import com.swiggy.Order.exceptions.UserNotFoundException;
 import com.swiggy.Order.exceptions.UsernameAlreadyInUseException;
